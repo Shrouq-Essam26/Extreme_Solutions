@@ -1,6 +1,7 @@
 package com.example.mywe.presentation.di
 
 import com.example.mywe.BuildConfig
+import com.example.mywe.ErrorHandler
 import com.example.mywe.data.api.Api
 import com.example.mywe.data.model.Constants
 import com.example.mywe.data.source.PreferencesHelper
@@ -28,6 +29,9 @@ class NetworkModule {
     @Singleton
     fun providesApiHolder() = RemoteApiHolder()
 
+    @Provides
+    @Singleton
+    fun providesErrorHandler() = ErrorHandler()
     @Provides
     @Singleton
     fun provideApi(retrofit: Retrofit, remoteApiHolder: RemoteApiHolder): Api {

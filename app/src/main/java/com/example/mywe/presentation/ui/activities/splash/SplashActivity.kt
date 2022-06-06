@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.widget.Toolbar
 import com.example.mywe.R
+import com.example.mywe.State
 import com.example.mywe.core.Status
 import com.example.mywe.databinding.ActivitySplashBinding
 import com.example.mywe.presentation.ui.common.BaseActivity
@@ -21,22 +22,21 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         setupToolbar(titleResId = R.string.app_name)
         viewModel.getConfig()
         viewModel.config.observe(this){
-
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.LOADING -> {
+                when (it) {
+                 is   State.Loading -> {
                         dialog.show()
                     }
-                    Status.SUCCESS -> {
+                is    State.Success -> {
+                    if (it.data.android_version.isNotEmpty())
                         dialog.dismiss()
                         binding.tvHello.text = it.data?.android_version
                     }
-                    Status.ERROR -> {
-                        dialog.dismiss()
+                    is  State.Error -> {
+                        dialog.setMessage(it.exception.toString())
+                        dialog.show()
                     }
                 }
             }
 
         }
     }
-}

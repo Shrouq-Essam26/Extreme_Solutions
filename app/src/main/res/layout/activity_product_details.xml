@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layoutDirection="ltr"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/_20sdp"
+    tools:context=".presentation.ui.activities.productDetails.ProductDetailsActivity">
+
+
+    <TextView
+        android:layout_marginTop="@dimen/_15sdp"
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tv_price"
+        android:text="Price: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:id="@+id/tv_priceValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_price"
+        app:layout_constraintBottom_toBottomOf="@id/tv_price"
+        app:layout_constraintStart_toEndOf="@id/tv_price"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:text="Description :"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_price"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_descriptionValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_15sdp"
+        app:layout_constraintStart_toEndOf="@id/tv_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_description"
+        />
+    <TextView
+        android:id="@+id/tv_rating"
+        android:text="Rating :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_descriptionValue"
+        app:layout_constraintStart_toStartOf="parent"
+
+/>
+    <TextView
+        android:id="@+id/tv_ratingValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_rating"
+        app:layout_constraintStart_toEndOf="@id/tv_rating"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+    <TextView
+        android:text="Count :"
+        android:id="@+id/tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_rating"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+    <TextView
+        android:id="@+id/tv_countValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_count"
+       app:layout_constraintStart_toEndOf="@id/tv_count"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+    <Button
+        android:id="@+id/bt_addToCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add To Cart"
+        app:layout_constraintTop_toBottomOf="@id/tv_count"
+
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/_25sdp"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+        android:id="@+id/iv_productImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/bt_addToCart"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

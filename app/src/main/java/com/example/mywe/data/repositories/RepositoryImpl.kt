@@ -4,7 +4,7 @@ import com.example.mywe.ErrorHandler
 import com.example.mywe.State
 import com.example.mywe.data.model.Response
 import com.example.mywe.data.source.DataSource
-import com.example.mywe.domain.entities.AppConfigEntity
+import com.example.mywe.domain.entities.*
 import com.example.mywe.domain.repositories.IRepository
 import io.reactivex.Single
 import kotlinx.coroutines.flow.Flow
@@ -26,4 +26,22 @@ class RepositoryImpl @Inject constructor(private val dataSource: DataSource , pr
 
         return dataSource.getAppConfig()
     }
+
+    override suspend fun getAppCategories(): Flow<CategoriesEntity> {
+        return dataSource.getCategories()
+    }
+
+    override suspend fun getProductsByCategory(category: String): Flow<ProductsEntity> {
+        return dataSource.getProductsByCategoryes(category)
+    }
+
+    override suspend fun AddProductTOCart(addProducctToCartRequestEntity: AddProducctToCartRequestEntity): Flow<CartEntityItem> {
+        return dataSource.AddProductToCart(addProducctToCartRequestEntity)
+    }
+
+    override  suspend fun getProductById(productId :Int) : Flow<ProductEntityItem>
+    {
+        return dataSource.getProductById(productId)
+    }
+
 }

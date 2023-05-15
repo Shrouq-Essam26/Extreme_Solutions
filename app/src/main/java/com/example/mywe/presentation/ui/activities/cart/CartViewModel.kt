@@ -1,4 +1,4 @@
-package com.example.mywe.presentation.ui.activities.splash
+package com.example.mywe.presentation.ui.activities.cart
 
 
 
@@ -7,35 +7,32 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mywe.ErrorHandler
 import com.example.mywe.State
-import com.example.mywe.core.Resource
-import com.example.mywe.data.model.Response
-import com.example.mywe.domain.entities.AppConfigEntity
-import com.example.mywe.domain.usecases.GetAppConfigUseCase
+import com.example.mywe.domain.entities.ProductEntityItem
+import com.example.mywe.domain.usecases.GetProductById
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import io.reactivex.functions.Consumer
 
 
 @HiltViewModel
-class SplashViewModel @Inject constructor(private val getAppConfigUseCase: GetAppConfigUseCase) :
+class CartViewModel @Inject constructor(private val getProductById: GetProductById) :
     ViewModel() {
     private val errorHandler: ErrorHandler = ErrorHandler()
-    val config = MutableLiveData<State<AppConfigEntity>>()
-    fun getConfig() {
+    val products = MutableLiveData<State<ProductEntityItem>>()
+    fun getproducts( productId : Int) {
         viewModelScope.launch(Dispatchers.IO) {
-        config.postValue(State.Loading)
+            products.postValue(State.Loading)
             try {
-                getAppConfigUseCase.build().collect {
-                    config.postValue(State.Success(data = it.data))
+                getProductById.build(productId).collect {
+                    products.postValue(State.Success(data = it))
                 }
             } catch (exception: Throwable) {
-                config.postValue(
+                products.postValue(
                     State.Error(exception = errorHandler.getError(exception))
                 )
             }
-        }
+       }
     }
 }

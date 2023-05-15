@@ -61,11 +61,11 @@ class NetworkModule {
     @Singleton
     fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor,
                             authenticator: MyAuthenticator): OkHttpClient {
-        val certificatePinner : CertificatePinner = CertificatePinner.Builder()
-            .add(
-                BuildConfig.URL,
-                "sha256/Zi7WyG7/3sg3UCgKI7P8BcO8Lz/5zMHcPmyGZGAw4+c="
-            ).build()
+//        val certificatePinner : CertificatePinner = CertificatePinner.Builder()
+//            .add(
+//                BuildConfig.URL,
+//                "sha256/Zi7WyG7/3sg3UCgKI7P8BcO8Lz/5zMHcPmyGZGAw4+c="
+//            ).build()
 
         val okHttpClient = OkHttpClient().newBuilder()
         okHttpClient.callTimeout(40, TimeUnit.SECONDS)
@@ -74,9 +74,9 @@ class NetworkModule {
         okHttpClient.writeTimeout(40, TimeUnit.SECONDS)
         okHttpClient.addInterceptor(loggingInterceptor)
         okHttpClient.authenticator(authenticator)
-        if(!BuildConfig.DEBUG)
-            okHttpClient.certificatePinner(certificatePinner)
-        okHttpClient.build()
+//        if(!BuildConfig.DEBUG)
+//            okHttpClient.certificatePinner(certificatePinner)
+//        okHttpClient.build()
 
 
         return okHttpClient.build()

@@ -21,7 +21,7 @@ abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.decorView.layoutDirection = View.LAYOUT_DIRECTION_RTL
+        window.decorView.layoutDirection = View.LAYOUT_DIRECTION_LTR
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         binding = getViewBinding()
         setSupportActionBar(binding.root.findViewById(R.id.toolbar))

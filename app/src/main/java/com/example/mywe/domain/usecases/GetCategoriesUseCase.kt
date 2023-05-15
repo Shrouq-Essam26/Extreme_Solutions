@@ -7,9 +7,8 @@ import com.example.mywe.domain.repositories.IRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetAppConfigUseCase @Inject constructor(private val repository: IRepository) {
-    suspend fun build(): Flow<Response<AppConfigEntity>> {
-        return repository.getAppConfig()
-    }
+class GetCategoriesUseCase @Inject constructor(private val repository: IRepository) {
+    suspend fun build(): Flow<CategoriesEntity> {
+        return repository.getAppCategories()    }
 
 }
